@@ -1,0 +1,37 @@
+resources:
+  main_llm:
+    category: llm
+    type: google_genai
+    model_name: "gemini-2-fast"
+    temperature: 0.7
+  
+  main_embed:
+    category: embeddings
+    type: localai_embeddings
+    base_url: "http://localhost:8080"
+    model_name: "bert"
+  
+  # Optional: Tool aligner for intelligent tool call correction
+  main_tool_aligner:
+    category: tool_aligner
+    type: tool_aligner
+    model_name: "BAAI/bge-small-en-v1.5"
+    threads: 2
+    tool_name_lexical_threshold: 85.0
+    tool_name_semantic_threshold: 0.7
+    tool_args_lexical_threshold: 80.0
+    tool_args_semantic_threshold: 0.65
+
+users:
+  simpleagent:
+    module: pipiline_agent.agent.SimpleAgent
+    class: SimpleAgent
+    resources:
+      llm: main_llm
+      # Uncomment to enable tool call correction:
+      # tool_aligner: main_tool_aligner
+  analyzer:
+    module: pipiline_agent.agent.BuildAnalyzer
+    class: BuildAnalyzer
+    resources:
+      llm: main_llm

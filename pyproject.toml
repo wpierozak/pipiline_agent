@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pipiline-agent"
+version = "0.1.0"
+description = "A flexible agent framework for building LLM-powered automation pipelines"
+readme = "README.md"
+authors = [
+    { name = "wpierozak" }
+]
+license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+keywords = ["llm", "agent", "automation", "pipeline", "ai", "ollama"]
+
+dependencies = [
+    "numpy>=1.24.0",
+    "fastembed>=0.2.0",
+    "rapidfuzz>=3.0.0",
+    "ollama>=0.1.0",
+    "json-repair>=0.25.0",
+    "function-schema>=0.4.0",
+    "jsonschema>=4.0.0",
+    "pyyaml>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/wpierozak/pipiline_agent"
+Repository = "https://github.com/wpierozak/pipiline_agent"
+Issues = "https://github.com/wpierozak/pipiline_agent/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
+
+[tool.setuptools]
+packages = ["pipiline_agent", "pipiline_agent.agent", "pipiline_agent.chat", "pipiline_agent.cmd_line", "pipiline_agent.coding", "pipiline_agent.config", "pipiline_agent.core", "pipiline_agent.directory", "pipiline_agent.embeddings", "pipiline_agent.jenkins_utils"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.yml"]
